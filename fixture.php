@@ -1,0 +1,85 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Alexandre Bispo
+ * Date: 01/10/14
+ * Time: 10:34
+ */
+
+require_once(__DIR__ . "/engine/conexao.php");
+
+
+echo "#### Conectando com banco ####";
+$conn = getDb();
+echo " - ok </ br>";
+
+echo "##### removendo tabela do Banco de dados ######";
+$conn->query("DROP TABLE pages");
+echo " - ok! </ br>";
+
+echo "######### Criando tabela de pages #########";
+$conn->query("
+    /*!40101 SET @saved_cs_client     = @@character_set_client */;
+    /*!40101 SET character_set_client = utf8 */;
+    CREATE TABLE `pages` (
+      `idpages` int(11) NOT NULL AUTO_INCREMENT,
+      `title` varchar(45) NOT NULL,
+      `path` varchar(45) NOT NULL,
+      `content` longtext NOT NULL,
+      `date_create` datetime NOT NULL,
+      PRIMARY KEY (`idpages`)
+    ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+    /*!40101 SET character_set_client = @saved_cs_client */;
+");
+echo " - ok </ br>";
+
+echo "########## Inserindo dados no database #######";
+$conn->query("
+    LOCK TABLES `pages` WRITE;
+    /*!40000 ALTER TABLE `pages` DISABLE KEYS */;
+    INSERT INTO `pages` VALUES (1,'home','includes/paine.php','<h1>home - Banco de Dados!</h1>','2014-08-16 00:04:00'),
+                               (2,'empresa','includes/empresas.php','<h1>Empresa - Banco de dados!</h1>','2014-08-16 00:07:00'),
+                               (3,'route','model/route.php','<h1>Página de teste para rota</h1>','2014-08-16 01:28:00');
+    /*!40000 ALTER TABLE `pages` ENABLE KEYS */;
+    UNLOCK TABLES;
+");
+
+echo " - ok </ br>";
+
+echo "############# Tabela com dados inseridos #############";
+
+echo "############# Criando tabelas de usuarios #############";
+
+$conn->query("
+     DROP TABLE IF EXISTS `user`;
+    /*!40101 SET @saved_cs_client     = @@character_set_client */;
+    /*!40101 SET character_set_client = utf8 */;
+    CREATE TABLE `user` (
+      `iduser` int(11) NOT NULL AUTO_INCREMENT,
+      `nome` varchar(100) DEFAULT NULL,
+      `sobrenome` varchar(100) DEFAULT NULL,
+      `datadecadastro` datetime NOT NULL,
+      `email` varchar(100) DEFAULT NULL,
+      `senha` varchar(100) NOT NULL,
+      PRIMARY KEY (`iduser`)
+    ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+    /*!40101 SET character_set_client = @saved_cs_client */;
+");
+
+echo " - ok! </ br>";
+echo "############# Tabelas user criada #############";
+
+echo "############# inserindo usuario e senha #############";
+
+$conn->query("
+    LOCK TABLES `user` WRITE;
+    /*!40000 ALTER TABLE `user` DISABLE KEYS */;
+    INSERT INTO `user` VALUES (1,'Alexandre','bispo','2012-08-20 14:00:00','alexandrebispo.mestre@gmail.com', '$2y$10$K7R8uoVQWzP9cR/YS3Wjx.F90yCDTTMX6zX9ky53QOcB1DXgCACim'),(2,'Wesley','education','2010-08-20 14:00:00','contato@codeeducation.com'),(3,'Jesus','Vieira','2007-08-20 14:00:00','jesusvieiradelima@gmail.com'),(4,'amanda','oliveira','2014-08-12 21:00:00','amanda.ana.xandi@gmail.com');
+    /*!40000 ALTER TABLE `user` ENABLE KEYS */;
+    UNLOCK TABLES;
+    /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+");
+
+
+echo " - ok! </ br>";
+echo "Usuario inserido!";
