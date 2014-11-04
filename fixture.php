@@ -7,6 +7,7 @@
  */
 
 require_once(__DIR__ . "/engine/conexao.php");
+require_once(__DIR__ . "/admin/painel/engine/password.php");
 
 
 echo "#### Conectando com banco ####";
@@ -71,13 +72,11 @@ echo "############# Tabelas user criada #############";
 
 echo "############# inserindo usuario e senha #############";
 
+$senha = password_hash('1234', PASSWORD_DEFAULT);
+
 $conn->query("
-    LOCK TABLES `user` WRITE;
-    /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-    INSERT INTO `user` VALUES (1,'Alexandre','bispo','2012-08-20 14:00:00','alexandrebispo.mestre@gmail.com', '$2y$10$K7R8uoVQWzP9cR/YS3Wjx.F90yCDTTMX6zX9ky53QOcB1DXgCACim'),(2,'Wesley','education','2010-08-20 14:00:00','contato@codeeducation.com'),(3,'Jesus','Vieira','2007-08-20 14:00:00','jesusvieiradelima@gmail.com'),(4,'amanda','oliveira','2014-08-12 21:00:00','amanda.ana.xandi@gmail.com');
-    /*!40000 ALTER TABLE `user` ENABLE KEYS */;
-    UNLOCK TABLES;
-    /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+    INSERT INTO `user`
+    VALUES (1,'Alexandre','bispo','2012-08-20 14:00:00','alexandrebispo.mestre@gmail.com', '{$senha}');
 ");
 
 
