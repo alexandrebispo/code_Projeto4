@@ -7,14 +7,10 @@
  */
 
 require_once(__DIR__ . "/../../../engine/config.php");
-<<<<<<< HEAD
-require_once(__DIR__ . "/../../../engine/funcoes.php");
-=======
 
 function curRoute() {
    return str_replace(".php", "", substr($_SERVER["REQUEST_URI"],+7));
 }
->>>>>>> 7c2b5e0996061fd736f2dbcf26fb78f1ff1d1619
 
 if(preg_match('/\.(?:png|jpg|jpeg|gif|css|js)$/', $_SERVER["REQUEST_URI"])){
     return false;
@@ -22,11 +18,7 @@ if(preg_match('/\.(?:png|jpg|jpeg|gif|css|js)$/', $_SERVER["REQUEST_URI"])){
 
     $getPath = curRoute();
 
-<<<<<<< HEAD
-    var_dump($getPath);
 
-=======
->>>>>>> 7c2b5e0996061fd736f2dbcf26fb78f1ff1d1619
     if(!isset($_SESSION["authing"])){
 
         $pageName = "auth";
@@ -65,10 +57,7 @@ if(preg_match('/\.(?:png|jpg|jpeg|gif|css|js)$/', $_SERVER["REQUEST_URI"])){
         require_once(__DIR__ . "/../includes/".$pageName.".php");
     };
 
-<<<<<<< HEAD
-    print_r($getPageContent());
-=======
+
     return $getPageContent();
->>>>>>> 7c2b5e0996061fd736f2dbcf26fb78f1ff1d1619
 
 }
