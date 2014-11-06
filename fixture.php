@@ -61,7 +61,7 @@ $conn->query("
       `sobrenome` varchar(100) DEFAULT NULL,
       `datadecadastro` datetime NOT NULL,
       `email` varchar(100) DEFAULT NULL,
-      `senha` varchar(100) NOT NULL,
+      `senha` varchar(255) NOT NULL,
       PRIMARY KEY (`iduser`)
     ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
     /*!40101 SET character_set_client = @saved_cs_client */;
