@@ -81,8 +81,9 @@ $conn->query("
 
 
 echo " - ok! </ br>";
-<<<<<<< HEAD
-echo "Usuario inserido!";
-=======
-echo "Usuario inserido!";
->>>>>>> 7c2b5e0996061fd736f2dbcf26fb78f1ff1d1619
+
+
+
+
+
+
