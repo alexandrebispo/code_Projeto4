@@ -1,7 +1,7 @@
 <?php
 
 //Array de Configuração;
-$config = array(
+return array(
     'db' =>  array(
        'host'  =>  '127.0.0.1',
        'dbname'=>  'education',
@@ -12,6 +12,7 @@ $config = array(
     'route' =>  array(
        'home',
        'empresa',
+
        'produtos',
        'contato',
        'procurar',
@@ -26,5 +27,6 @@ $config = array(
     ),
 
 );
+
 
 ?>

@@ -1,9 +1,10 @@
 <?php
+
 function getDb(){
 
     try{
 
-        require_once(__DIR__."/../engine/config.php");
+        $config = include_once(__DIR__ . "/config.php");
 
         if(!isset($config['db'])){
             throw new \InvalidArgumentException("Configuração do Banco de dados não existe!");

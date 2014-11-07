@@ -6,7 +6,7 @@
  * Time: 12:38
  */
 
-require_once(__DIR__ . "/../../../engine/config.php");
+$config = include_once(__DIR__ . "/../../../engine/config.php");
 
 function curRoute() {
    return str_replace(".php", "", substr($_SERVER["REQUEST_URI"],+7));
@@ -17,7 +17,6 @@ if(preg_match('/\.(?:png|jpg|jpeg|gif|css|js)$/', $_SERVER["REQUEST_URI"])){
 }else{
 
     $getPath = curRoute();
-
 
     if(!isset($_SESSION["authing"])){
 
