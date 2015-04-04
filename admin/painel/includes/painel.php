@@ -8,7 +8,6 @@ error_reporting(E_ALL | E_STRICT);
 <head>
     <?php require_once(__DIR__ . "/../includes/head.php"); ?>
     <?php require_once(__DIR__ . "/../../../engine/conexao.php"); ?>
-
 </head>
 
 <body role="document">
@@ -16,6 +15,13 @@ error_reporting(E_ALL | E_STRICT);
     <?php require_once(__DIR__ . "/../includes/navbar.php"); ?>
 </div>
 <div class="page-header">
+    <div style="align-content: left; margin-bottom: 15px; margin-left: 15px">
+        <button type="button" class="btn btn-lg btn-primary">
+            <font>
+                <font ><a id="bwhite" href="page_inserir.php">Incluir Pages</a></font>
+            </font>
+        </button>
+    </div>
     <?php
 
     $conn = getDb();
@@ -26,7 +32,6 @@ error_reporting(E_ALL | E_STRICT);
 
     foreach($res as $key => $value){
 ?>
-
     <table class="table table-bordered">
             <thead>
               <tr>
@@ -34,14 +39,18 @@ error_reporting(E_ALL | E_STRICT);
                 <th>title</th>
                 <th>content</th>
                 <th>date_create</th>
+                <th colspan="2">
+                </th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td><?php echo $value['idpages']; ?></td>
                 <td><?php echo $value['title']; ?></td>
-                <td rowspan="4"><?php echo $value['content']; ?></td>
+                <td id="editor" rowspan="4"><?php echo $value['content']; ?></td>
                 <td><?php echo $value['date_create']; ?></td>
+                <td><a href="page_alterar.php?pid=<?php echo $value['idpages']; ?>">Alterar</a></td>
+                <td><a href="page_deletar.php?pid=<?php echo $value['idpages']; ?>">Deletar</a></td>
               </tr>
             </tbody>
           </table>

@@ -1,3 +1,5 @@
+<html lang="pt-br">
+<head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,3 +30,13 @@
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="../../../js/ckeditor/ckeditor.js"></script>
+    <script src="../../../js/ckeditor/adapters/jquery.js"></script>
+    <script>
+        $( document ).ready( function() {
+            $( 'textarea#editor' ).ckeditor();
+        } );
+
+    </script>
+</head>

@@ -13,16 +13,14 @@ if(!$_SESSION['authing'] = "logado"){
 
     try{
 
-        $user = "alexandrebispo.mestre@gmail.com";//$_POST['email'];
-        $senha = "1234";//$_POST['password'];
+        $user = $_POST['email'];
+        $senha = $_POST['password'];
 
         $sql = getDb();
         $smtp = $sql->prepare("SELECT * FROM education.user WHERE email=:user");
         $smtp->bindValue(":user", $user);
         $smtp->execute();
         $res = $smtp->fetch(PDO::FETCH_ASSOC);
-
-        var_dump($res);
 
     }catch (\Exception   $e){
         echo "Dados de busca do usuário incorreto" . $e->getMessage();
